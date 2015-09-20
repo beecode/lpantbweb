@@ -1,0 +1,26 @@
+.sign{
+  text-align: center;
+  font-size: 12px;
+  margin-top: 34px;
+}
+
+.sign .sign-left{
+  margin-left:8%;
+  float:left
+}
+.sign .sign-right{
+  margin-right:8%;
+  float:right;
+}
+
+.sign .spacer{
+  display: block;
+  height: 55px;
+}
+.sign .sign-name{
+  font-weight:bold;
+}
+
+.sign .sign-title{
+  font-weight:bold;
+}
