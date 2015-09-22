@@ -38,14 +38,21 @@
                 </a>
                 <?php } ?>
               </div>
-              @include('formka1.view.delwarning')
+              @include('formka1multi.view.delwarning')
         <?php } else { ?>
             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
               <a class="btn btn-small btn-info" title="Detail Form"
                  href="{{ URL::to('/dash/formka1/detailview/'.$val->id) }}">
                    <span class=" glyphicon glyphicon-th-list"></span>
               </a>
+              <?php  if (Auth::user()->level == "admin" || Auth::user()->level == "developer") {?>
+              <a class="btn btn-small btn-danger" title="Delete"
+                  data-toggle="modal" data-target="#delmodal-{{$val->id}}">
+                  <span class="glyphicon glyphicon-trash"></span>
+              </a>
+              <?php } ?>
             </div>
+            @include('formka1multi.view.delwarning')
         <?php } ?>
       </td>
     </tr>

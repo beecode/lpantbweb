@@ -55,9 +55,15 @@
               href="{{ URL::to('/dash/formka2multi/detailview/'.$val->id) }}">
               <span class=" glyphicon glyphicon-th-list"></span>
             </a>
+            <?php  if (Auth::user()->level == "admin" || Auth::user()->level == "developer") {?>
+            <a class="btn btn-small btn-danger" title="Delete"
+                data-toggle="modal" data-target="#delmodal-{{$val->id}}">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+            <?php } ?>
           </div>
+          @include('formka2multi.view.delwarning')
           <?php } ?>
-
         </td>
       </tr>
       <?php } ?>
