@@ -25,7 +25,12 @@ $anak = $data;
                 </tr>
                 <tr>
                     <th>Tanggal Lahir</th>
-                    <td>{{date('d-m-Y',strtotime($anak->tanggal_lahir))}}</td>
+                    <?php
+                      $tgl = $anak->bulan_lahir."/"
+                             .$anak->tanggal_lahir."/"
+                             .$anak->tahun_lahir;
+                    ?>
+                    <td>{{date('D, d M Y',strtotime($tgl))}}</td>
                 </tr>
                 <tr>
                     <th>Agama</th>

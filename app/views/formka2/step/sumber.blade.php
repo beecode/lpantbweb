@@ -21,9 +21,9 @@ if (isset($record)) {
 
 
 
-    {{ Form::label('tgl', 'Tanggal Lahir',['class'=>'col-sm-2 control-label']) }}
+    {{ Form::label('tgl', 'Tanggal Informasi',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-1" style="margin-right:  0px; padding-right: 0px; width: 80px; ">
-        <?php $sumber['tanggal_lahir'] = (isset($sumber->tanggal_lahir)) ? $sumber->tanggal_lahir : null; ?>
+        <?php $sumber['tanggal_informasi'] = (isset($sumber->tanggal_informasi)) ? $sumber->tanggal_informasi : null; ?>
         <?php
           $hari_list = [];
           $hari_list["Hari"] = "Hari";
@@ -31,14 +31,14 @@ if (isset($record)) {
             $hari_list[$h] = $h;
           }
         ?>
-        {{ Form::select('sumber[tanggal_lahir]',
+        {{ Form::select('sumber[tanggal_informasi]',
                                              $hari_list ,
-                                             $sumber['tanggal_lahir'],
+                                             $sumber['tanggal_informasi'],
                                              ['class'=>'form-control'])
         }}
     </div>
     <div class="col-sm-1" style="margin: 0px; padding: 0px; width: 89px;">
-        <?php $sumber['bulan_lahir'] = (isset($sumber->bulan_lahir)) ? $sumber->bulan_lahir : null; ?>
+        <?php $sumber['bulan_informasi'] = (isset($sumber->bulan_informasi)) ? $sumber->bulan_informasi : null; ?>
         <?php
           $bulan_list = [];
           $bulan_list["Bulan"] = "Bulan";
@@ -46,10 +46,10 @@ if (isset($record)) {
             $bulan_list[$b] = $b;
           }
         ?>
-        {{ Form::select('sumber[bulan_lahir]', $bulan_list, $sumber['bulan_lahir'], ['class'=>'form-control'])}}
+        {{ Form::select('sumber[bulan_informasi]', $bulan_list, $sumber['bulan_informasi'], ['class'=>'form-control'])}}
     </div>
     <div class="col-sm-2" style="margin: 0px; padding: 0px; width: 89px;">
-      <?php $sumber['tahun_lahir'] = (isset($sumber->tahun_lahir)) ? $sumber->tahun_lahir : null; ?>
+      <?php $sumber['tahun_informasi'] = (isset($sumber->tahun_informasi)) ? $sumber->tahun_informasi : null; ?>
       <?php
       $year_start = 1910;
       $year_end = date("Y");
@@ -59,7 +59,7 @@ if (isset($record)) {
         $tahun_list[$i]=$i;
       }
       ?>
-      {{ Form::select('sumber[tahun_lahir]', $tahun_list, $sumber['tahun_lahir'], ['class'=>'form-control'])}}
+      {{ Form::select('sumber[tahun_informasi]', $tahun_list, $sumber['tahun_informasi'], ['class'=>'form-control'])}}
     </div>
 </div>
 

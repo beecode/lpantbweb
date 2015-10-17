@@ -1,7 +1,11 @@
 <header class="header">
-  <a href="<?php echo URL::to('/dash'); ?>" class="logo">
+  <a href="<?php echo URL::to('/dash'); ?>" class="logo"
+     style="padding:0 16px; !important;  text-align:left;">
     <!-- Add the class icon to your logo image or logo icon to add the margining -->
+    <img src="<?php echo URL::to("images/logo.png"); ?>" width="28px"
+         style="padding:0; margin:0;">
     Dashboard LPA
+
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">

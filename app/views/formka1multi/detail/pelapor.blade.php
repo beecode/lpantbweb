@@ -20,7 +20,12 @@ $pelapor = $anak->pelapor->first();
         </tr>
         <tr>
           <th>Tempat, Tanggal Lahir</th>
-          <td>{{$pelapor->tempat_lahir}}, {{date('d-m-Y',strtotime($pelapor->tanggal_lahir))}}</td>
+          <?php
+            $tgl = $pelapor->bulan_lahir."/"
+                   .$pelapor->tanggal_lahir."/"
+                   .$pelapor->tahun_lahir;
+          ?>
+          <td>{{$pelapor->tempat_lahir}}, {{date('d M Y',strtotime($tgl))}}</td>
         </tr>
         <tr>
           <th>Agama</th>

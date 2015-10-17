@@ -52,7 +52,9 @@ class IbuDAO {
     public static function exchangeArray($ibu, $ib) {
         $ibu->nama = $ib['nama'];
         $ibu->tempat_lahir = $ib['tempat_lahir'];
-        $ibu->tanggal_lahir = DateHelper::toDate($ib['tanggal_lahir']);
+        $ibu->tanggal_lahir = $ib['tanggal_lahir'];
+        $ibu->bulan_lahir = $ib['bulan_lahir'];
+        $ibu->tahun_lahir = $ib['tahun_lahir'];
         $ibu->alamat = $ib['alamat'];
         $ibu->pekerjaan = $ib['pekerjaan'];
         $ibu->telp = $ib['telp'];

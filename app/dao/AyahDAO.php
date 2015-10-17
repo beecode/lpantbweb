@@ -52,7 +52,9 @@ class AyahDAO {
     public static function exchangeArray($ayah, $ayh) {
         $ayah->nama = $ayh['nama'];
         $ayah->tempat_lahir = $ayh['tempat_lahir'];
-        $ayah->tanggal_lahir = DateHelper::toDate($ayh['tanggal_lahir']);
+        $ayah->tanggal_lahir = $ib['tanggal_lahir'];
+        $ayah->bulan_lahir = $ib['bulan_lahir'];
+        $ayah->tahun_lahir = $ib['tahun_lahir'];
         $ayah->alamat = $ayh['alamat'];
         $ayah->pekerjaan = $ayh['pekerjaan'];
         $ayah->telp = $ayh['telp'];

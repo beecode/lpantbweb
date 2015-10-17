@@ -13,7 +13,12 @@ $ibu = $keluarga->ibu;
             </tr>
             <tr>
                 <th>Tempat/Tanggal Lahir</th>
-                <td>{{$ibu->tempat_lahir.", "}}{{date('d-m-Y',strtotime($ibu->tanggal_lahir))}}</td>
+                <?php
+                  $tgl = $ibu->bulan_lahir."/"
+                         .$ibu->tanggal_lahir."/"
+                         .$ibu->tahun_lahir;
+                ?>
+                <td>{{$ibu->tempat_lahir.", "}}{{date('d M Y',strtotime($tgl))}}</td>
             </tr>
             <tr>
                 <th>Alamat</th>

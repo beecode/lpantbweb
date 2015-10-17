@@ -49,7 +49,9 @@ class SumberInformasiDAO {
 
     public static function exchangeArray($sb, $sum) {
         $sb->sumber = $sum['sumber'];
-        $sb->tanggal = DateHelper::toDate($sum['tanggal_informasi']);
+        $sb->tanggal_informasi = $sum['tanggal_informasi'];
+        $sb->bulan_informasi = $sum['bulan_informasi'];
+        $sb->tahun_informasi = $sum['tahun_informasi'];
         $sb->dasar_rujukan = $sum['dasar_rujukan'];
         $sb->contact_person = $sum['contact_person'];
         $sb->telp = $sum['telp'];

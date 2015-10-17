@@ -23,7 +23,12 @@ $anak = $data->anak->first();
         </tr>
         <tr>
           <th>Tempat/Tanggal Lahir</th>
-          <td>{{$anak->tempat_lahir.", "}}{{date('d-m-Y',strtotime($anak->tanggal_lahir))}}</td>
+          <?php
+              $tgl = $anak->bulan_lahir."/"
+                    .$anak->tanggal_lahir."/"
+                    .$anak->tahun_lahir;
+          ?>
+          <td>{{$anak->tempat_lahir.", "}}{{date('d M Y',strtotime($tgl))}}</td>
         </tr>
         <tr>
           <th>Pendidikan</th>

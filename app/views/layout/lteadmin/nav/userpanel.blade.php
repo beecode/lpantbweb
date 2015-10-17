@@ -1,13 +1,10 @@
 <div class="user-panel">
     <div class="pull-left image">
-        <img src="<?php echo URL::to("lte/img/avatar3.png"); ?>"
+        <img src="<?php echo URL::to("images/user.png"); ?>"
              class="img-circle" alt="User Image">
     </div>
     <div class="pull-left info">
-        <p>Hello, {{Auth::user()->username}}</p>
-
-        <a href="#">
-            <i class="fa fa-circle text-success"></i> Online
-        </a>
+        <p>Hai, {{Auth::user()->username}}</p>
+        <p>{{ucfirst(Auth::user()->level)}}</p>
     </div>
 </div>

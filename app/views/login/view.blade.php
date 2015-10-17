@@ -23,11 +23,14 @@
 </div>
 
 @if (Session::has('message'))
-<div class="alert alert-danger alert-dismissable">
-    <i class="fa fa-info"></i>
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    {{ Session::get('message') }}
+<div class="form-box" id="login-box" style="width:61%">
+  <div class="alert alert-danger alert-dismissable">
+      <i class="fa fa-info"></i>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      {{ Session::get('message') }}
+  </div>
 </div>
+
 @endif
 
 @stop
