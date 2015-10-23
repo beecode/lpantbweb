@@ -48,7 +48,18 @@
                                 </a>
                               </div>
                               @include('user.view.delwarning')
-                            </div>
+                            <?php } else if (Auth::user()->level=="developer") { ?>
+                              <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
+                                  <a class="btn btn-small btn-warning" title="Update"
+                                     href="{{ URL::to('/dash/user/updateview/'.$val->id) }}">
+                                      <span class=" glyphicon glyphicon-edit"></span>
+                                  </a>
+                                  <a class="btn btn-small btn-danger" title="Delete"
+                                      data-toggle="modal" data-target="#delmodal-{{$val->id}}">
+                                      <span class="glyphicon glyphicon-trash"></span>
+                                  </a>
+                                </div>
+                                @include('user.view.delwarning')
                             <?php } ?>
                         </td>
 

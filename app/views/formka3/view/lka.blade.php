@@ -85,7 +85,8 @@
     <?php } else { ?>
         <br/>
         <div class="alert alert-info">
-            Data tidak tersedia atau tidak ditemukan...
+          Data LKA Baru tidak tersedia atau tidak ditemukan...<br/>
+          Jika Anda ingin melihat Form KA3 yang sudah dibuat silahkan klik tombol Semua
         </div>
     <?php } ?>
 </div>

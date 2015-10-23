@@ -169,7 +169,7 @@ class FormKA7Controller extends BaseController {
 
         $form = FormDAO::saveOrUpdate($fm);
         $anak = Anak::find($an['id']);
-        JenisKasusDAO::saveOrUpdate($jk, $anak);
+
 //
 //        //save many to many
         $form = Form::find($form->id);
@@ -177,6 +177,15 @@ class FormKA7Controller extends BaseController {
         $form->user()->attach($user->id);
 
         JenisKasusDAO::attachAll($jk, $anak);
+
+        //this part must be write after JenisKasusDAO::attachAll
+        //and cannot befote JenisKasusDAO::attahcAll
+        //otherwise it will detach other jenis kasus
+        if (isset($jk['other']['check'])){
+          if ($jk['other']['check']==1){
+            JenisKasusDAO::saveOrUpdate($jk, $anak);
+          }
+        }
 
         //notifikasi
         FormKA7DisposisiHelper::addNotif($form->id);
@@ -224,10 +233,17 @@ class FormKA7Controller extends BaseController {
 //        //save many to many
         $form = Form::find($form->id);
         JenisKasusDAO::attachAll($jk, $anak);
-        JenisKasusDAO::saveOrUpdate($jk, $anak);
+        //this part must be write after JenisKasusDAO::attachAll
+        //and cannot befote JenisKasusDAO::attahcAll
+        //otherwise it will detach other jenis kasus
+        if (isset($jk['other']['check'])){
+          if ($jk['other']['check']==1){
+            JenisKasusDAO::saveOrUpdate($jk, $anak);
+          }
+        }
 
         //notifikasi
-        FormKA7DisposisiHelper::updateNotif($id);
+        FormKA7DisposisiHelper::updateNotif($form->id);
 
         Session::flash('message', "Form with No LKA $form->no_lka has been updated!");
         return Redirect::to('/dash/formka7');

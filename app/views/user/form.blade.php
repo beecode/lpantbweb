@@ -45,6 +45,20 @@
                     </div>
 
                     <div class="form-group">
+                        {{ Form::label('Gender', 'Gender', ['class'=>'col-sm-2 control-label']) }}
+                        <div class="col-sm-3">
+                            <?php
+                            $list = [
+                                'Pria' => 'Pria',
+                                'Wanita' => 'Wanita',
+                            ];
+                            ?>
+                              <?php $gender = (isset($user->gender)) ? $user->gender : null; ?>
+                            {{ Form::select('user[gender]', $list, $gender, ['class'=>'form-control','required']) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         {{ Form::label('Jabatan', 'Jabatan',['class'=>'col-sm-2 control-label']) }}
                         <div class="col-sm-3">
                             <?php $occupation = (isset($user->occupation)) ? $user->occupation : null; ?>

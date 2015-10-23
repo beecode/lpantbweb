@@ -22,7 +22,7 @@ use App\DAO\FormDAO,
     App\DAO\IbuDAO,
     App\DAO\IdentifikasiMasalahDAO,
     App\DAO\KondisiPsikososialDAO,
-    App\DAO\PendampingDAO;
+    App\DAO\PendampinganDAO;
 
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\KA3DisposisiHelper;
@@ -286,7 +286,9 @@ class FormKA4Controller extends BaseController {
     FormKA4DisposisiHelper::deleteNotif($id);
 
     $fm = Form::find($id);
-    $anak = $fm->anak->first();
+    $anakId = 64;
+
+    $anak = Anak::find($anakId);
     $forms = $anak->form;
 
     //delete semua form yang berkaitan
@@ -298,11 +300,30 @@ class FormKA4Controller extends BaseController {
     }
 
     //delete data pendampingan
-    $pendamping = $anak->pendampingan;
+    $pendamping = $anak->Pendampingan()->get();
     foreach($pendamping as $pd){
       PendampinganDAO::delete($pd->id);
     }
 
+    $gf = $anak->GambaranFisik()->get();
+    foreach($gf as $val){
+      GambaranFisikDAO::delete($val->id);
+    }
+
+    $kp = $anak->KondisiPsikososial()->get();
+    foreach($kp as $val){
+       KondisiPsikososialDAO::delete($val->id);
+    }
+
+    $im = $anak->IdentifikasiMasalah()->get();
+    foreach($im as $val){
+      IdentifikasiMasalahDAO::delete($val->id);
+    }
+
+    $kel = $anak->Keluarga()->get();
+    foreach($kel as $val){
+      KeluargaDAO::delete($val->id);
+    }
 
     if ($fm) {
       Session::flash('message', "Form with $id has been deleted!");

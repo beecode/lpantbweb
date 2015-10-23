@@ -29,6 +29,7 @@
                 <span class=" glyphicon glyphicon-th-list"></span>
               </a>
             </td>
+            <td><?php echo $val->user->first()->name; ?></td>
             <td class="text-center">
               <?php if (UserHelper::isLoggedUserIncluded($val->user)){ ?>
                 <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">

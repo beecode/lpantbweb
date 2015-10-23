@@ -13,6 +13,9 @@ use App\Helpers\FormHelper;
 use App\Helpers\LocationHelper;
 use App\DAO\FormDAO;
 use App\DAO\PelaporDAO;
+use App\DAO\PendampinganDAO;
+use App\DAO\FilesDAO;
+use App\DAO\JenisKasusDAO;
 use App\DAO\AnakDAO;
 use App\DAO\ContactPersonDAO;
 use App\Models\Anak;
@@ -109,8 +112,18 @@ class AnakController extends BaseController {
         $contact = $anak->contact_person;
         if ($contact) $contact->delete();
 
+        $jenis = $anak->jenis_kasus;
+        foreach($jenis as $jn){
+          if ($jn->other=="T"){
+            JenisKasusDAO::delete($jn->id);
+          }
+        }
+
         $nama_anak = $anak->nama;
         $anak->delete();
+
+
+
         if ($anak) {
             Session::flash('message', "Anak dengan Nama $nama_anak been deleted!");
         } else {

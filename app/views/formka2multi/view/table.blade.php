@@ -52,7 +52,7 @@
           <?php } else { ?>
             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
               <a class="btn btn-small btn-info" title="Detail Form"
-              href="{{ URL::to('/dash/formka2multi/detailview/'.$val->id) }}">
+              href="{{ URL::to('/dash/formka2multi/detailview/'.$val->id.'/'.$lka) }}">
               <span class=" glyphicon glyphicon-th-list"></span>
             </a>
             <?php  if (Auth::user()->level == "admin" || Auth::user()->level == "developer") {?>

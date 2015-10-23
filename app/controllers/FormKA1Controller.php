@@ -14,6 +14,9 @@ use App\Helpers\FormHelper;
 use App\Helpers\LocationHelper;
 use App\DAO\FormDAO;
 use App\DAO\PelaporDAO;
+use App\DAO\PendampinganDAO;
+use App\DAO\FilesDAO;
+use App\DAO\JenisKasusDAO;
 use App\DAO\AnakDAO;
 use App\DAO\ContactPersonDAO;
 use Illuminate\Support\Facades\DB;
@@ -313,6 +316,48 @@ class FormKA1Controller extends BaseController {
     //delete semua form yang berkaitan
     foreach ($forms as $form) {
       FormDAO::delete($form->id);
+    }
+
+
+    $pendampingan = $anak->pendampingan;
+    if ($pendampingan){
+      foreach($pendampingan as $pen){
+        PendampinganDAO::delete($pen->id);
+      }
+    }
+
+    $files = $anak->files;
+    if ($files){
+      foreach($files as $fl){
+        FilesDAO::delete($fl->id);
+      }
+    }
+
+    $pelapor = $anak->pelapor->first();
+    if ($pelapor) $pelapor->delete();
+
+    $keluarga = $anak->keluarga;
+    if ($keluarga) $keluarga->delete();
+
+    $fisik = $anak->gambaran_fisik;
+    if ($fisik) $fisik->delete();
+
+    $identifikasi = $anak->identifikasi_masalah;
+    if ($identifikasi) $identifikasi->delete();
+
+    $psiko = $anak->kondisi_psikososial;
+    if ($psiko) $psiko->delete();
+
+    $contact = $anak->contact_person;
+    if ($contact) $contact->delete();
+
+    $jenis = $anak->jenis_kasus;
+    if ($jenis){
+      foreach($jenis as $jn){
+        if ($jn->other=="T"){
+          JenisKasusDAO::delete($jn->id);
+        }
+      }
     }
 
     //delete data anak

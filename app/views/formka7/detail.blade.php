@@ -34,7 +34,7 @@
         </div>
         <div class="col-xs-1">
           <span class="pull-right small" style="margin-bottom:10px;">
-            <label class="label label-danger"  style="margin:0px;">Form KA5</label>
+            <label class="label label-danger"  style="margin:0px;">Form KA7</label>
           </span>
         </div>
       </div><!-- /.col -->
@@ -67,7 +67,6 @@
             <div class="col-xs-12" style="margin-top:61px;">
                 <a href="{{URL::to('dash/formka7')}}" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Back</a>
                 <button class="btn btn-default pull-right" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
-                <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
             </div>
         </div>
 

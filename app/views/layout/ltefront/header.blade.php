@@ -1,7 +1,11 @@
 <header class="header">
-    <a href="<?php echo URL::to('/'); ?>" class="logo">
-        <!-- Add the class icon to your logo image or logo icon to add the margining -->
-        LPA NTB
+  <a href="<?php echo URL::to('/'); ?>" class="logo"
+     style="padding:0 16px; !important; ">
+    <!-- Add the class icon to your logo image or logo icon to add the margining -->
+    <img src="<?php echo URL::to("images/logo.png"); ?>" width="34px"
+         style="padding:0; margin:0;">
+         <span style="margin-top:10px;">LPA NTB</span>
+
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">

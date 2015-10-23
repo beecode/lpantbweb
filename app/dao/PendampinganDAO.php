@@ -12,7 +12,7 @@ use App\Helpers\DateHelper;
 class PendampinganDAO {
 
     /**
-     * 
+     *
      * @param array $pen
      * @param \App\Models\Anak $anak
      * @return \App\Models\Pendampingan
@@ -50,7 +50,7 @@ class PendampinganDAO {
     }
 
     public static function exchangeArray($pd, $pen) {
-        $pd->tanggal = DateHelper::toDate($pen['tanggal']);
+        $pd->tanggal = $pen['tanggal'];
         $pd->bentuk = $pen['bentuk'];
         $pd->tempat = $pen['tempat'];
         $pd->pelaksana = $pen['pelaksana'];

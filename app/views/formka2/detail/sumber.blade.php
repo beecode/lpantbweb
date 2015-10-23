@@ -15,13 +15,15 @@ $sumber = $anak->sumber_informasi->first();
                     <td>{{$sumber->sumber}}</td>
                 </tr>
                 <tr>
-                    <th>Tanggal Informasi  </th>
-                    <?php
-                      $tgl = $sumber->bulan_informasi."/"
-                             .$sumber->tanggal_informasi."/"
-                             .$sumber->tahun_informasi;
-                    ?>
-                    <td>{{date('d M Y',strtotime($tgl))}}</td>
+                  <th>Tanggal Lahir</th>
+                  <?php
+                    $tgl = DateHelper::showDate(
+                      $sumber->tanggal_informasi,
+                      $sumber->bulan_informasi,
+                      $sumber->tahun_informasi
+                    );
+                  ?>
+                  <td>{{$tgl}}</td>
                 </tr>
                 <tr>
                     <th>Dasar Rujukan</th>

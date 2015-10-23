@@ -62,6 +62,7 @@ class JenisKasusDAO {
         $jenis->jenis = $jk['other']['value'];
         $jenis->other = 'T';
 
+
         return $jenis;
     }
 

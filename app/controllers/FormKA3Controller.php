@@ -191,8 +191,8 @@ class FormKA3Controller extends BaseController {
         $form = FormDAO::saveOrUpdate($fm);
         $disposisi = DisposisiDAO::saveOrUpdate($dis, $form);
         $anak = Anak::find($an['id']);
-        TindakLanjutDAO::saveOrUpdate($ti, $anak);
-        JenisKasusDAO::saveOrUpdate($jk, $anak);
+
+
 
        //save many to many
         $form = Form::find($form->id);
@@ -202,12 +202,41 @@ class FormKA3Controller extends BaseController {
         TindakLanjutDAO::attachAll($ti, $anak);
         JenisKasusDAO::attachAll($jk, $anak);
 
+        //this part must be write after TindakLanjutDAO::attachAll
+        //and cannot befote TindakLanjutDAO::attahcAll
+        //otherwise it will detach other tindak lanjut
+        if (isset($ti['other']['check'])){
+          if ($ti['other']['check']==1){
+            TindakLanjutDAO::saveOrUpdate($ti, $anak);
+          }
+        }
+        //this part must be write after JenisKasusDAO::attachAll
+        //and cannot befote JenisKasusDAO::attahcAll
+        //otherwise it will detach other jenis kasus
+        if (isset($jk['other']['check'])){
+          if ($jk['other']['check']==1){
+            JenisKasusDAO::saveOrUpdate($jk, $anak);
+          }
+        }
+
 
         //notifikasi
         NotifikasiDisposisiHelper::disposisiCreate($form->id);
 
+
         Session::flash('message', "Form with No LKA $form->no_lka has been added!");
-        return Redirect::to('/dash/formka3');
+
+        // echo "JK<br/>";
+        // echo "<pre>";
+        // print_r($jk);
+        // echo "</pre>";
+        //
+        // echo "Tindak<br/>";
+        // echo "<pre>";
+        // print_r($ti);
+        // echo "</pre>";
+
+          return Redirect::to('/dash/formka3');
     }
 
     public function updateView($id) {
@@ -257,9 +286,24 @@ class FormKA3Controller extends BaseController {
 
         $anak = Anak::find($an['id']);
         TindakLanjutDAO::attachAll($ti, $anak);
-        JenisKasusDAO::attachAll($jk, $anak);
-        TindakLanjutDAO::saveOrUpdate($ti, $anak);
-        JenisKasusDAO::saveOrUpdate($jk, $anak);
+        //this part must be write after TindakLanjutDAO::attachAll
+        //and cannot befote TindakLanjutDAO::attahcAll
+        //otherwise it will detach other tindak lanjut
+        if (isset($ti['other']['check'])){
+          if ($ti['other']['check']==1){
+            TindakLanjutDAO::saveOrUpdate($ti, $anak);
+          }
+        }
+
+        //this part must be write after JenisKasusDAO::attachAll
+        //and cannot befote JenisKasusDAO::attahcAll
+        //otherwise it will detach other jenis kasus
+          JenisKasusDAO::attachAll($jk, $anak);
+        if (isset($jk['other']['check'])){
+          if ($jk['other']['check']==1){
+            JenisKasusDAO::saveOrUpdate($jk, $anak);
+          }
+        }
 
         $form = Form::find($form->id);
 

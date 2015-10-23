@@ -58,7 +58,13 @@ $jenis = $anak->jenis_kasus;
                 <?php foreach ($table as $val) { ?>
                     <tr>
                         <!-- <td class="text-center">{{$c++}}</td> -->
-                        <td>{{strftime( "%A, %d-%B-%Y", strtotime($val->tanggal))}}</td>
+                        <td>
+                          <?php if ($val->tanggal=="0000-00-00" || $val->tanggal==null) { ?>
+                            Tidak Terisi
+                          <?php } else { ?>
+                          {{strftime( "%A, %d-%B-%Y", strtotime($val->tanggal))}}
+                          <?php } ?>
+                        </td>
                         <td>{{$val->bentuk}}</td>
                         <td>{{$val->tempat}}</td>
                         <td>

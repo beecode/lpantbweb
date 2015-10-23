@@ -182,16 +182,32 @@ class FormKA5Controller extends BaseController {
         $form = FormDAO::saveOrUpdate($fm);
         DisposisiDAO::saveOrUpdate($dis, $form);
         $anak = Anak::find($an['id']);
-        JenisKasusDAO::saveOrUpdate($jk, $anak);
-        IntervensiDAO::saveOrUpdate($int, $anak);
 
         //save many to many
         $form = Form::find($form->id);
         $form->Anak()->attach($an['id']);
         $form->user()->attach($user->id);
 
+
+
+
+        //this part must be write after JenisKasusDAO::attachAll
+        //and cannot befote JenisKasusDAO::attahcAll
+        //otherwise it will detach other jenis kasus
         JenisKasusDAO::attachAll($jk, $anak);
+        if (isset($jk['other']['check'])){
+          if ($jk['other']['check']==1){
+            JenisKasusDAO::saveOrUpdate($jk, $anak);
+          }
+        }
+
         IntervensiDAO::attachAll($int, $anak);
+        if (isset($int['other']['check'])){
+          if ($int['other']['check']==1){
+            IntervensiDAO::saveOrUpdate($int, $anak);
+          }
+        }
+
 
         //notifikasi
         NotifikasiDisposisiHelper::disposisiCreate($form->id);
@@ -240,9 +256,14 @@ class FormKA5Controller extends BaseController {
 
         $anak = Anak::find($an['id']);
         JenisKasusDAO::attachAll($jk, $anak);
+        if ($jk['other']['check']==1){
+          JenisKasusDAO::saveOrUpdate($jk, $anak);
+        }
+
         IntervensiDAO::attachAll($int, $anak);
-        JenisKasusDAO::saveOrUpdate($jk, $anak);
-        IntervensiDAO::saveOrUpdate($int, $anak);
+        if ($int['other']['check']==1){
+          IntervensiDAO::saveOrUpdate($int, $anak);
+        }
 
 
         //save many to many

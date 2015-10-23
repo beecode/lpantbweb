@@ -195,6 +195,7 @@ return array(
 		'SettingDAO'			=> 'App\DAO\SettingDAO',
 		'PrintLog'				=> 'App\Helpers\PrintLog',
 		'LKAHelper'				=> 'App\Helpers\LKAHelper',
+		'DateHelper'			=> 'App\Helpers\DateHelper',
 		'Datatable'		 		=> 'Chumper\Datatable\Facades\DatatableFacade',
 
 	),

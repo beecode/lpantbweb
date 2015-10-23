@@ -26,11 +26,13 @@ $anak = $data;
                 <tr>
                     <th>Tanggal Lahir</th>
                     <?php
-                      $tgl = $anak->bulan_lahir."/"
-                             .$anak->tanggal_lahir."/"
-                             .$anak->tahun_lahir;
+                    $tgl = DateHelper::showDate(
+                      $anak->tanggal_lahir,
+                      $anak->bulan_lahir,
+                      $anak->tahun_lahir
+                    );
                     ?>
-                    <td>{{date('D, d M Y',strtotime($tgl))}}</td>
+                    <td>{{$tgl}}</td>
                 </tr>
                 <tr>
                     <th>Agama</th>

@@ -14,11 +14,13 @@ $ibu = $keluarga->ibu;
             <tr>
                 <th>Tempat/Tanggal Lahir</th>
                 <?php
-                  $tgl = $ayah->bulan_lahir."/"
-                         .$ayah->tanggal_lahir."/"
-                         .$ayah->tahun_lahir;
+                  $tgl = DateHelper::showDate(
+                    $ayah->tanggal_lahir,
+                    $ayah->bulan_lahir,
+                    $ayah->tahun_lahir
+                  );
                 ?>
-                <td>{{$ayah->tempat_lahir.", "}}{{date('d M Y',strtotime($tgl))}}</td>
+                <td>{{$ayah->tempat_lahir.", "}}{{$tgl}}</td>
             </tr>
             <tr>
                 <th>Alamat</th>

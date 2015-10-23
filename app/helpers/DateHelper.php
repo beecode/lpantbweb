@@ -39,4 +39,36 @@ class DateHelper {
         return $out;
     }
 
+
+    public static function showDate($day, $month, $year){
+
+      if ($day!="Hari" && $month!="Bulan" && $year!="Tahun"){
+          $tgl = $month."/".$day."/".$year;
+          return date('d-m-Y',strtotime($tgl));
+      } else {
+        if ($day>=1 && $day<=9){
+          $day = "0".$day;
+        }
+
+        if ($month>=1 && $month<=9){
+          $month = "0".$month;
+        }
+
+        if ($day=="Hari"){
+          $day = "00";
+        }
+
+        if ($month=="Bulan"){
+          $month = "00";
+        }
+
+        if ($year=="Tahun"){
+          $year = "0000";
+        }
+
+        $tgl = $day."-".$month."-".$year;
+        return $tgl;
+      }
+    }
+
 }

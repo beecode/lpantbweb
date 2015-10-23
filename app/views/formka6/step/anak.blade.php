@@ -15,7 +15,7 @@ if (isset($record)) {
 
 <div class="form-group has-primary">
     {{ Form::label('anak[jenis_kasus]', 'Jenis Kasus', ['class'=>'col-sm-2 control-label']) }}
-    <div class="col-sm-3 ">
+    <div class="col-sm-5">
         <?php $c = 1; ?>
         <?php
         foreach ($jenis_kasus as $jk) {
@@ -37,37 +37,28 @@ if (isset($record)) {
 
         <?php
         $ovjk = null;
-        if ($form_status == "edit") {
-            foreach ($anak->jenis_kasus as $vjk) {
-                if ($vjk->other == "T") {
-                    $ovjk = $vjk;
-                }
+        foreach ($anak->jenis_kasus as $vjk) {
+            if ($vjk->other == "T") {
+                $ovjk = $vjk;
             }
-            $cko = null;
-            $vko = null;
-            ?>
+        }
+        $cko = null;
+        $vko = null;
+        ?>
 
-            <?php if (!is_null($ovjk)) { ?>
-                {{Form::input('hidden','jenis_kasus[other][id]',$ovjk->id)}}
-                <?php $cko = ['checked' => 'checked'] ?>
-                <?php $vko = $ovjk->jenis; ?>
-            <?php } ?>
-            <div class="checkbox">
-                {{ Form::checkbox('jenis_kasus[other][check]', true, $cko) }}
-                8. Lain - Lain
-                <div style="margin-top: 10px;">
-                    {{Form::text('jenis_kasus[other][value]',$vko,['class'=>'form-control lain','placeholder'=>'Lain-Lain'])}}
-                </div>
-            </div>
-        <?php } else { ?>
-            <div class="checkbox">
-                {{ Form::checkbox('jenis_kasus[other][check]', true) }}
-                8. Lain - Lain
-                <div style="margin-top: 10px;">
-                    {{Form::text('jenis_kasus[other][value]','',['class'=>'form-control lain','placeholder'=>'Lain-Lain'])}}
-                </div>
-            </div>
+        <?php if (!is_null($ovjk)) { ?>
+            {{Form::input('hidden','jenis_kasus[other][id]',$ovjk->id)}}
+            <?php $cko = ['checked' => 'checked'] ?>
+            <?php $vko = $ovjk->jenis; ?>
         <?php } ?>
+        <div class="checkbox">
+            {{ Form::checkbox('jenis_kasus[other][check]', true, $cko) }}
+            {{$c}}. Lain - Lain
+            <div style="margin-top: 10px;">
+                {{Form::text('jenis_kasus[other][value]',$vko,['class'=>'form-control lain','placeholder'=>'Lain-Lain'])}}
+            </div>
+        </div>
+
 
     </div>
 </div>

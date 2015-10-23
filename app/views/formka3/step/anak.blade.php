@@ -25,7 +25,7 @@ if (isset($record)) {
 
 <div class="form-group has-primary">
     {{ Form::label('anak[jenis_kasus]', 'Jenis Kasus', ['class'=>'col-sm-2 control-label']) }}
-    <div class="col-sm-3 ">
+    <div class="col-sm-5">
         <?php $c = 1; ?>
         <?php
         foreach ($jenis_kasus as $jk) {
@@ -70,7 +70,7 @@ if (isset($record)) {
             <?php } ?>
             <div class="checkbox">
                 {{ Form::checkbox('jenis_kasus[other][check]', true, $cko) }}
-                8. Lain - Lain
+                {{$c}}. Lain - Lain
                 <div style="margin-top: 10px;">
                     {{Form::text('jenis_kasus[other][value]',$vko,['class'=>'form-control lain','placeholder'=>'Lain-Lain'])}}
                 </div>
@@ -78,7 +78,7 @@ if (isset($record)) {
         <?php } else { ?>
             <div class="checkbox">
                 {{ Form::checkbox('jenis_kasus[other][check]', true) }}
-                8. Lain - Lain
+                {{$c}}. Lain - Lain
                 <div style="margin-top: 10px;">
                     {{Form::text('jenis_kasus[other][value]','',['class'=>'form-control lain','placeholder'=>'Lain-Lain'])}}
                 </div>

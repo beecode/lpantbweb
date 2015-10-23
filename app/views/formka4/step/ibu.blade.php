@@ -42,30 +42,45 @@ if (!is_null($anak->keluarga)) {
         {{ Form::text('ibu[tempat_lahir]', $ib['tempat_lahir'], ['class' => 'form-control'])  }}
     </div>
 
-    <?php
-    $aday = "";
-    $amonth = "";
-    $ayear = "";
-    if (isset($ibu->tanggal_lahir)) {
-        $ar = \App\Helpers\DateHelper::toArray($ibu->tanggal_lahir);
-        $aday = $ar['day'];
-        $amonth = $ar['month'];
-        $ayear = $ar['year'];
-    }
-    ?>
-
     {{ Form::label('tgl', 'Tanggal Lahir',['class'=>'col-sm-2 control-label']) }}
-    <div class="col-sm-1" style="margin-right:  0px; padding-right: 0px; width: 70px; ">
-        <?php // $aday = (isset($Ibu->tanggal_lahir)) ? date('d', $Ibu->tanggal_lahir) : null;     ?>
-        {{ Form::text('ibu[tanggal_lahir][day]', $aday, ['class' => 'form-control','placeholder'=>'Hari'])  }}
+    <div class="col-sm-1" style="margin-right:  0px; padding-right: 0px; width: 80px; ">
+        <?php $ib['tanggal_lahir'] = (isset($ibu->tanggal_lahir)) ? $ibu->tanggal_lahir : null; ?>
+        <?php
+          $hari_list = [];
+          $hari_list["Hari"] = "Hari";
+          for ($h = 1; $h<=31; $h++){
+            $hari_list[$h] = $h;
+          }
+        ?>
+        {{ Form::select('ibu[tanggal_lahir]',
+                                             $hari_list ,
+                                             $ib['tanggal_lahir'],
+                                             ['class'=>'form-control'])
+        }}
     </div>
-    <div class="col-sm-1" style="margin: 0px; padding: 0px; width: 65px;">
-        <?php // $amonth = (isset($Ibu->tanggal_lahir)) ? date('m', $Ibu->tanggal_lahir) : null;     ?>
-        {{ Form::text('ibu[tanggal_lahir][month]', $amonth, ['class' => 'form-control','placeholder'=>'Bulan'])  }}
+    <div class="col-sm-1" style="margin: 0px; padding: 0px; width: 89px;">
+        <?php $ib['bulan_lahir'] = (isset($ibu->bulan_lahir)) ? $ibu->bulan_lahir : null; ?>
+        <?php
+          $bulan_list = [];
+          $bulan_list["Bulan"] = "Bulan";
+          for ($b = 1; $b<=12; $b++){
+            $bulan_list[$b] = $b;
+          }
+        ?>
+        {{ Form::select('ibu[bulan_lahir]', $bulan_list, $ib['bulan_lahir'], ['class'=>'form-control'])}}
     </div>
-    <div class="col-sm-1" style="margin: 0px; padding: 0px; width: 65px;">
-        <?php // $ayear = (isset($Ibu->tanggal_lahir)) ? date('Y', $Ibu->tanggal_lahir) : null;     ?>
-        {{ Form::text('ibu[tanggal_lahir][year]', $ayear, ['class' => 'form-control','placeholder'=>'Tahun'])  }}
+    <div class="col-sm-2" style="margin: 0px; padding: 0px; width: 89px;">
+      <?php $ib['tahun_lahir'] = (isset($ibu->tahun_lahir)) ? $ibu->tahun_lahir : null; ?>
+      <?php
+      $year_start = 1910;
+      $year_end = date("Y");
+      $tahun_list = [];
+      $tahun_list["Tahun"] = "Tahun";
+      for ($i = $year_start; $i<=$year_end; $i++){
+        $tahun_list[$i]=$i;
+      }
+      ?>
+      {{ Form::select('ibu[tahun_lahir]', $tahun_list, $ib['tahun_lahir'], ['class'=>'form-control'])}}
     </div>
 </div>
 

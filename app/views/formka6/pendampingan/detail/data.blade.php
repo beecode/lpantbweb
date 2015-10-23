@@ -3,7 +3,14 @@
   <table class="table">
     <tr>
       <th style="width: 27%;">Tanggal</th>
-      <td>{{date('l, d F Y',strtotime($data->tanggal))}}</td>
+      <td>
+
+        <?php if ($data->tanggal=="0000-00-00" || $data->tanggal==null) { ?>
+          Tidak terisi
+        <?php } else { ?>
+          {{date('l, d F Y',strtotime($data->tanggal))}}
+        <?php } ?>
+      </td>
     </tr>
     <tr>
       <th>Jenis Kasus</th>

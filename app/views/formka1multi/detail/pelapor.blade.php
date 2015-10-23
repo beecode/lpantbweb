@@ -21,11 +21,13 @@ $pelapor = $anak->pelapor->first();
         <tr>
           <th>Tempat, Tanggal Lahir</th>
           <?php
-            $tgl = $pelapor->bulan_lahir."/"
-                   .$pelapor->tanggal_lahir."/"
-                   .$pelapor->tahun_lahir;
+          $tgl = DateHelper::showDate(
+            $pelapor->tanggal_lahir,
+            $pelapor->bulan_lahir,
+            $pelapor->tahun_lahir
+          );
           ?>
-          <td>{{$pelapor->tempat_lahir}}, {{date('d M Y',strtotime($tgl))}}</td>
+          <td>{{$pelapor->tempat_lahir}}, {{$tgl}}</td>
         </tr>
         <tr>
           <th>Agama</th>

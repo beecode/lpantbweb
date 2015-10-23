@@ -37,6 +37,7 @@ class FormKA2MultiController extends BaseController {
       'page_title' => 'Kasus Anak 2 (KA2) Multi',
       'panel_title' => 'Table Multi View',
       'location' => 'view',
+      'enc_lka'=>$enc_lka,
       'table' => Form::where('nama', '=', 'ka2')
       ->where('no_lka','=',$lka)
       ->orderBy('created_at', 'desc')->get(),
@@ -67,11 +68,12 @@ class FormKA2MultiController extends BaseController {
     return View::make('formka2multi.view', $data);
   }
 
-  public function detailView($id) {
+  public function detailView($id,$enc_lka) {
     $data = [
       'page_title' => 'Kasus Anak 2 (KA2) Multi',
       'panel_title' => 'Detail View',
       'location' => 'view',
+      'lka'=>$enc_lka,
       'data' => Form::where('nama', '=', 'ka2')->where('id', '=', $id)->first(),
     ];
     return View::make('formka2multi.detail', $data);

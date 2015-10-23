@@ -19,14 +19,14 @@ $koordinator = $user_formka3->name;
     <div class="sign">
 
       <div class="sign-left">
-        <span class="sign-title">Tanggal {{date('d F Y')}}</span><br>
+        {{-- <span class="sign-title">Tanggal {{date('d F Y')}}</span><br> --}}
         <span class="sign-title">Assesor Tracer</span>
         <div class="spacer"></div>
         <span class="sign-name">({{$assesor}})</span>
       </div>
 
       <div class="sign-right">
-        <span class="sign-title">Tanggal {{date('d F Y')}}</span><br>
+        {{-- <span class="sign-title">Tanggal {{date('d F Y')}}</span><br> --}}
         <span class="sign-title">Pelayanan dan Penanganan Kasus LPA NTB</span>
         <div class="spacer"></div>
         <span class="sign-name">({{$koordinator}})</span>

@@ -24,11 +24,13 @@ $anak = $data->anak->first();
         <tr>
           <th>Tempat/Tanggal Lahir</th>
           <?php
-              $tgl = $anak->bulan_lahir."/"
-                    .$anak->tanggal_lahir."/"
-                    .$anak->tahun_lahir;
+            $tgl = DateHelper::showDate(
+              $anak->tanggal_lahir,
+              $anak->bulan_lahir,
+              $anak->tahun_lahir
+            );
           ?>
-          <td>{{$anak->tempat_lahir.", "}}{{date('d M Y',strtotime($tgl))}}</td>
+          <td>{{$anak->tempat_lahir.", "}}{{$tgl}}</td>
         </tr>
         <tr>
           <th>Pendidikan</th>
