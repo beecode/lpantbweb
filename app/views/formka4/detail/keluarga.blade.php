@@ -21,3 +21,7 @@ $ibu = $keluarga->ibu;
   </div>
 
 </div>
+
+<div class="col-xs-12">
+  <br><br>
+</div>
